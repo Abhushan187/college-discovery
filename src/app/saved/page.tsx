@@ -36,7 +36,7 @@ export default async function SavedPage() {
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {saved.map(s => (
-            <CollegeCard key={s.id} college={s.college} isSaved />
+            <CollegeCard key={s.id} college={s.college} isSaved={true} />
           ))}
         </div>
       )}
