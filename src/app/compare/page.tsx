@@ -3,13 +3,24 @@ import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
+// Update the interface to match your actual API response structure
+interface College { 
+  id: string; 
+  name: string; 
+  fees: number; 
+  rating: number; 
+  placements: { placementRate: number } | null;
+}
+
 export default function ComparePage() {
-  const [colleges, setColleges] = useState<any[]>([]);
+  const [colleges, setColleges] = useState<College[]>([]);
   const [c1, setC1] = useState<string>("");
   const [c2, setC2] = useState<string>("");
 
   useEffect(() => {
-    fetch("/api/colleges?limit=50").then(res => res.json()).then(data => setColleges(data.colleges));
+    fetch("/api/colleges?limit=50")
+      .then(res => res.json())
+      .then(data => setColleges(data.colleges || []));
   }, []);
 
   const data1 = colleges.find(c => c.id === c1);
