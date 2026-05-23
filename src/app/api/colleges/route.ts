@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const maxFees = parseInt(searchParams.get("maxFees") || "10000000");
   const sortBy = searchParams.get("sortBy") || "rating";
   const page = parseInt(searchParams.get("page") || "1");
-  const limit = 6;
+  const limit = 50;
 
   const where: any = {
     AND: [
